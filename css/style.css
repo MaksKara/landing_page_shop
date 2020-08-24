@@ -1,7 +1,37 @@
-@font-face {
-	font-family: 'BebasNeue-Regular';
-	src: url('../assets/fonts/BebasNeue-Regular.eot');
-	src: local('☺'), url('../assets/fonts/BebasNeue-Regular.woff') format('woff'), url('../assets/fonts/BebasNeue-Regular.ttf') format('truetype'), url('../assets/fonts/BebasNeue-Regular.svg') format('svg');
-	font-weight: normal;
-	font-style: normal;
+
+body{
+	font-family: BebasNeue, Open Sans, sans-serif;
+	/*text-transform: uppercase;*/
+	margin: 0;
+}
+*, *:before, *:after{
+	box-sizing: border-box;
+}
+h1, h2, h3, h4, h5, h6, p{
+	margin: 0;
+	padding: 0;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+/*-----  HEADER  -----*/
+.header{
+	display: flex;
+	align-items: baseline;
+	padding: 15px 0;
+}
+.header__title{
+	font-family: Lobster, serif;
+	font-size: 49px;
+	color: #3cc3b5;
+}
+.header__search{
+	/*h32 w436*/
+}
+.header__coast{
+	text-align: center;
+	font-size: 33px;
+	color: #a1a1a1;
 }
