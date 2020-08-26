@@ -2,6 +2,7 @@
 body{
 	font-family: BebasNeue, Open Sans, sans-serif;
 	margin: 0;
+	color: #afafaf;
 	background: #3cc3b5;
 	background: linear-gradient(to bottom right, #40c6b1, #3ec2b7);
 }
@@ -79,7 +80,6 @@ ul,li{
 	display: flex;
 }
 .navigation__link{
-	/*display: block;*/
 	padding: 0 25px;
 	border-right: 2px solid #fff;
 }
@@ -92,5 +92,51 @@ ul,li{
 
 /*-----  BANNER  -----*/
 .banner{
+	height: 90vh;
+}
+
+
+/*-----  CATEGORIES  -----*/
+.categories{
+	background: #fff;
+	margin: 25px 0;
+}
+.categories__inner{
+	display: flex;
+}
+.categories__item{
+	padding: 0 70px 0 20px; 
+	display: flex;
+	border-left: 1px solid #e7e7e7;
+	align-items: center;
+}
+.categories__item:first-child{
+	border-left: none;
+	padding-left: 0;
+}
+.categories__img{
+	display: block;
 	
+}
+.categories__info{
+	display: block;
+}
+.categories__title{
+	width: 77px;
+	font-size: 27px;
+}
+.categories__btn{
+	width: 60px;
+	display: block;
+	color: #fff;
+	background: #3cc395;
+	text-align: center;
+	font-size: 19px;
+	border: 3px solid #3cc395;
+	padding: 0 12px;
+	border-radius: 5px;
+}
+.categories__btn:hover{
+	color: #3cc395;
+	background: #fff;
 }
