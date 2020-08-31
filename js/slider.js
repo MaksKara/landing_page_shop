@@ -1,5 +1,6 @@
 const slides = document.querySelectorAll('.banner__slide'),
-	  dots = document.querySelectorAll('.dot');
+	  dots = document.querySelectorAll('.dot'),
+	  sliderWrapper = document.querySelector('.banner__slider-wrapper');
 
 let index = 0;
 
@@ -33,6 +34,8 @@ const nextSlide = () => {
 }
 
 const prevSlide = () => {
+	clearInterval(interval);
+	
 	if(index == 0) {
 		index == slides.length - 1;
 		prepareCurrentSlide(index);
@@ -50,4 +53,12 @@ dots.forEach((item, indexDot) => {
 	});
 });
 
-const interval = setInterval(nextSlide, 5000);
+const interval = setInterval(nextSlide, 2000);
+
+sliderWrapper.addEventListener('mouseenter', event => {
+	clearInterval(interval);
+});
+
+sliderWrapper.addEventListener('mouseleave', event => {
+	setTimeout(nextSlide, 2000);
+});
