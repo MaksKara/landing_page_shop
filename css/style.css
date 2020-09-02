@@ -164,7 +164,7 @@ ul,li{
 /*-----  CATEGORIES  -----*/
 .categories{
 	background: #fff;
-	margin: 25px 0;
+	padding: 25px 0;
 }
 .categories__inner{
 	display: flex;
@@ -181,7 +181,15 @@ ul,li{
 }
 .categories__img{
 	display: block;
-	
+	/*width: 217px;*/
+	padding-right: 60px;
+}
+.categories__img-np{
+	padding-right: 0;
+}
+.categories__img img{
+	width: 100%;
+	height: 100%;
 }
 .categories__info{
 	display: block;
@@ -204,4 +212,58 @@ ul,li{
 .categories__btn:hover{
 	color: #3cc395;
 	background: #fff;
+}
+
+/*-----  PRE-PRODUCTS  -----*/
+.pre-products{
+
+}
+.pre-products__title{
+	font-size: 31px;
+	color: #fff;
+	padding: 15px 0;
+}
+
+/*-----  PRODUCTS  -----*/
+.products{
+	background-color: #fff;
+	padding-top: 45px;
+}
+.products__item{
+	width: 100%;
+	display: block;
+	text-align: center;
+	align-items: center;
+	font-size: 27px;
+	border: 1px solid #e4e4e4;
+	border-bottom: 5px solid #3cc395;
+	margin-bottom: 45px;
+}
+.products__img{
+	padding: 40px 0 20px;
+}
+.products__img img{
+	width: 100%;
+	height: 100%;
+}
+.products__name{
+	line-height: 0.8em;
+	padding-bottom: 10px;
+}
+.products__cost{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-bottom: 30px;
+}
+.products__price{
+	padding-right: 15px;
+}
+.products__btn{
+	font-size: 20px;
+	padding: 8px;
+	color: #fff;
+	background: #3cc395;
+	border: 2px solid #3cc395;
+	border-radius: 5px;
 }
