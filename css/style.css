@@ -33,10 +33,18 @@ ul,li{
 
 /*-----  HEADER  -----*/
 .header{
+	width: 100%;
 	display: flex;
 	align-items: center;
 	padding: 15px 0;
 	background: #fff;
+	transition: all 0.7s ease-out;
+	z-index: 5;
+}
+.header.active{
+	position: fixed;
+	padding: 0;
+	box-shadow: 0 5px 10px rgba(0,0,0,0.5)
 }
 .header__title{
 	display: block;
@@ -64,12 +72,27 @@ ul,li{
 	font-size: 33px;
 	color: #a1a1a1;
 }
+.dot__quant{
+	width: 25px;
+    height: 25px;
+    font-size: 15px;
+    line-height: 1.8em;
+    border-radius: 50%;
+    background-color: #3cc3b5;
+    color: #fff;
+    position: absolute;
+    top: 65%;
+    left: 23%;
+}
 .header__basket{
+	position: relative;
 	margin-right: 15px;
 }
 
 /*-----  NAVIGATION  -----*/
 .navigation{
+	display: block;
+	width: 100%;
 	background: #4ccfc1;
 	color: #fff;
 	font-size: 21px;
@@ -91,6 +114,7 @@ ul,li{
 
 /*-----  BANNER  -----*/
 .banner{
+	display: block;
 	padding: 60px 0 20px;
 	color: #fff;
 }
