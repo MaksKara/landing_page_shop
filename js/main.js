@@ -29,12 +29,12 @@ price.innerHTML = '0$';
 dotQuant.innerHTML = 0;
 
 const drawHTML = product => `
-	<div class="col-lg-3 offset-lg-1">
-		<div class="products__item">
+	<div class="col-lg-4 products__item-wrap">
+		<div class="products__item" id="items_${product.id}">
 			<img src="${product.img}" alt="${product.title}" class="products__img">
 			<p class="products__name">${product.title}</p>
 			<div class="products__cost">
-				<p class="products__price">${product.price}</p>
+				<p class="products__price">$${product.price}</p>
 				<a href="#" class="products__btn">Buy now</a>
 			</div>
 		</div>
@@ -47,3 +47,35 @@ function render() {
 }
 
 render();
+
+window.onload = function() { 
+	let arrProducts = [
+		document.querySelector('#items_1').offsetHeight,
+		document.querySelector('#items_2').offsetHeight,
+		document.querySelector('#items_3').offsetHeight,
+		document.querySelector('#items_4').offsetHeight,
+		document.querySelector('#items_5').offsetHeight,
+		document.querySelector('#items_6').offsetHeight
+	];
+
+	function equalHeight() {
+		document.querySelector('#items_1').style.height = 'auto';
+		document.querySelector('#items_2').style.height = 'auto';
+		document.querySelector('#items_3').style.height = 'auto';
+		document.querySelector('#items_4').style.height = 'auto';
+		document.querySelector('#items_5').style.height = 'auto';
+		document.querySelector('#items_6').style.height = 'auto';
+
+		const maxH = Math.max.apply(null, arrProducts);
+		
+		document.querySelector('#items_1').style.height = maxH + 'px';
+		document.querySelector('#items_2').style.height = maxH + 'px';
+		document.querySelector('#items_3').style.height = maxH + 'px';
+		document.querySelector('#items_4').style.height = maxH + 'px';
+		document.querySelector('#items_5').style.height = maxH + 'px';
+		document.querySelector('#items_6').style.height = maxH + 'px';
+	}
+
+	equalHeight();
+	window.onresize = equalHeight;
+}

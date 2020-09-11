@@ -254,6 +254,11 @@ ul,li{
 	background-color: #fff;
 	padding-top: 45px;
 }
+.products__item-wrap{
+	width: 100%;
+	padding: 0 15px;
+	margin-bottom: 45px;
+}
 .products__item{
 	width: 100%;
 	display: block;
@@ -262,7 +267,6 @@ ul,li{
 	font-size: 27px;
 	border: 1px solid #e4e4e4;
 	border-bottom: 5px solid #3cc395;
-	margin-bottom: 45px;
 }
 .products__img{
 	padding: 40px 0 20px;
