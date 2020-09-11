@@ -1,3 +1,14 @@
+document.addEventListener('DOMContentLoaded', function(){
+	render();
+})
+
+window.onload = function () {
+	alignHeight();
+	window.onresize = alignHeight;
+	alignHeight_2()
+}
+
+
 let products = [
 {id: 1, title: 'Branded Shoe', price: 300, img: 'assets/img/products/product_1.png'},
 {id: 2, title: 'Branded Tees', price: 250, img: 'assets/img/products/product_2.png'},
@@ -46,36 +57,31 @@ function render() {
 	document.querySelector('#products__cards').innerHTML = html;
 }
 
-render();
+//первый способ.
+function alignHeight(){
+	let maxH = 0;
+	let items = document.querySelectorAll(".products__item");
+	items.forEach(function (item, index) {
+		let height = item.offsetHeight;
+		if(height > maxH){
+			maxH = height;
+		}
+	});
+	items.forEach(function (item, index) {
+		item.style.height = `${maxH}px`;
+	});
+}
 
-window.onload = function() { 
-	let arrProducts = [
-		document.querySelector('#items_1').offsetHeight,
-		document.querySelector('#items_2').offsetHeight,
-		document.querySelector('#items_3').offsetHeight,
-		document.querySelector('#items_4').offsetHeight,
-		document.querySelector('#items_5').offsetHeight,
-		document.querySelector('#items_6').offsetHeight
-	];
-
-	function equalHeight() {
-		document.querySelector('#items_1').style.height = 'auto';
-		document.querySelector('#items_2').style.height = 'auto';
-		document.querySelector('#items_3').style.height = 'auto';
-		document.querySelector('#items_4').style.height = 'auto';
-		document.querySelector('#items_5').style.height = 'auto';
-		document.querySelector('#items_6').style.height = 'auto';
-
-		const maxH = Math.max.apply(null, arrProducts);
-		
-		document.querySelector('#items_1').style.height = maxH + 'px';
-		document.querySelector('#items_2').style.height = maxH + 'px';
-		document.querySelector('#items_3').style.height = maxH + 'px';
-		document.querySelector('#items_4').style.height = maxH + 'px';
-		document.querySelector('#items_5').style.height = maxH + 'px';
-		document.querySelector('#items_6').style.height = maxH + 'px';
+//второй способ.
+function alignHeight_1() {
+	let maxH = 0;
+	for(let product of products){
+		let height = document.querySelector(`#items_${product.id}`).offsetHeight;
+		if(height > maxH){
+			maxH = height;
+		}
 	}
-
-	equalHeight();
-	window.onresize = equalHeight;
+	for(let product of products){
+		document.querySelector(`#items_${product.id}`).style.height = `${maxH}px`;
+	}
 }
