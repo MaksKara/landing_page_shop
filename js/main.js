@@ -74,20 +74,52 @@ function alignHeight() {
 	});
 }
 
-const btnPlus = document.querySelector('.btn-plus');
-const maxAmound = 10; 
-const count = 1;
+const btnPlus = document.querySelector('.btn-plus'),
+	  btnMinus = document.querySelector('.btn-minus');
+const maxAmound = 9; 
+let count = 1;
+
+
+
 function modalPlus() {
-	if(count < maxAmound) {
-		count++;
-	} else {
-		alert('Sorry, max amount products(');
-	}
-	modalQuant.innerHTML = count;
+	for(let i = 1; i < maxAmound; i++){
+		if(count < maxAmound) {
+			count++;
+			modalQuant.innerHTML = count;
+			dotQuant.innerHTML = count;
+			break;
+		} else {
+			alert('Sorry, max amount products(');
+			break;
+		}
+	}	
 }
+
+function modalMinus() {
+	for(let i = count; i > 1; i--){
+		if(count > 1) {
+			count--;
+			modalQuant.innerHTML = count;
+			dotQuant.innerHTML = count;
+			break;
+		} 
+	}	
+}
+
 btnPlus.addEventListener('click', modalPlus);
-		console.log(modalQuant);
-		console.log(count);
+btnMinus.addEventListener('click', modalMinus);
+
+
+
+
+
+
+
+
+
+
+
+
 //второй способ.
 // function alignHeight_1() {
 // 	let maxH = 0;
