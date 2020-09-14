@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>Aditii - Online shop</title>
 	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/jquery.fancybox.css">
 	<link rel="stylesheet" href="css/fonts.css">
 	<link rel="stylesheet" href='css/style.css'>
 </head>
@@ -23,11 +24,32 @@
 					</div>
 				</div>
 				<div class="col-lg-2 ml-auto cont-center">
-					<div class="header__coast">
+					<a href="#" class="header__coast" data-fancybox data-src="#coast__modal">
 						<img src="assets/img/header/Shop.png" alt="basket" class="header__basket">
 						<span class="header__quant"></span>
 						<p class="header__price"></p>
+					</a>
+					<div id="coast__modal">
+						<div class="modal-wrap">
+							<div class="modal__item">
+								<img src="assets/img/products/product_1.png" alt="Shoe" class="modal__img">
+								<div class="modal__quant">
+									<span class="btn-minus">-</span>
+									<span class="modal__numb"></span>
+									<span class="btn-plus">+</span>
+								</div>
+								<span class="modal__price">300$</span>
+								<a href="#" class="modal__btn btn-delete">Delete</a>
+							</div>
+							
+							
+						</div>
+						<div class="modal__footer">
+							<div class="modal__total">Total: <span>300$</span></div>
+							<a href="#" class="modal__btn btn-confirm">Pay now</a>
+						</div>
 					</div>
+					
 				</div>	
 			</div><!-- /.row -->
 		</div><!-- /.container -->
@@ -254,6 +276,7 @@
 	</footer><!-- /FOOTER -->
 	
 	<script src="js/jquery-3.5.1.min.js"></script>
+	<script src="js/jquery.fancybox.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/slider.js"></script>
 	<script src="js/main.js"></script>

@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function(){
 window.onload = function () {
 	alignHeight();
 	window.onresize = alignHeight;
-	alignHeight_2()
+	// alignHeight_2();
 }
 
 
@@ -19,7 +19,8 @@ let products = [
 ];
 
 let price = document.querySelector('.header__price'),
-	dotQuant = document.querySelector('.header__quant');
+	dotQuant = document.querySelector('.header__quant'),
+	modalQuant = document.querySelector('.modal__numb');
 
 window.onscroll = function() {
 	scrollFunc();
@@ -38,6 +39,7 @@ function scrollFunc() {
 
 price.innerHTML = '0$';
 dotQuant.innerHTML = 0;
+modalQuant.innerHTML = 1;
 
 const drawHTML = product => `
 	<div class="col-lg-4 products__item-wrap">
@@ -58,7 +60,7 @@ function render() {
 }
 
 //первый способ.
-function alignHeight(){
+function alignHeight() {
 	let maxH = 0;
 	let items = document.querySelectorAll(".products__item");
 	items.forEach(function (item, index) {
@@ -72,16 +74,31 @@ function alignHeight(){
 	});
 }
 
-//второй способ.
-function alignHeight_1() {
-	let maxH = 0;
-	for(let product of products){
-		let height = document.querySelector(`#items_${product.id}`).offsetHeight;
-		if(height > maxH){
-			maxH = height;
-		}
+const btnPlus = document.querySelector('.btn-plus');
+const maxAmound = 10; 
+const count = 1;
+function modalPlus() {
+	if(count < maxAmound) {
+		count++;
+	} else {
+		alert('Sorry, max amount products(');
 	}
-	for(let product of products){
-		document.querySelector(`#items_${product.id}`).style.height = `${maxH}px`;
-	}
+	modalQuant.innerHTML = count;
 }
+btnPlus.addEventListener('click', modalPlus);
+		console.log(modalQuant);
+		console.log(count);
+//второй способ.
+// function alignHeight_1() {
+// 	let maxH = 0;
+// 	for(let product of products){
+// 		let height = document.querySelector(`#items_${product.id}`).offsetHeight;
+// 		if(height > maxH){
+// 			maxH = height;
+// 		}
+// 	}
+// 	for(let product of products){
+// 		document.querySelector(`#items_${product.id}`).style.height = `${maxH}px`;
+// 	}
+// }
+
