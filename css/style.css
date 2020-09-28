@@ -84,14 +84,19 @@ ul,li{
 	font-size: 22px;
 }
 .modal-wrap{
-	padding-bottom: 20px;
-	border-bottom: 1px solid #aeaeae;
 	margin-bottom: 20px;
 }
 .modal__item{
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 10px;
+}
+.modal__product{
+	width: 200px;
+	text-align: center;
 }
 .modal__img img{
 	width: 100%;
@@ -109,9 +114,10 @@ ul,li{
 	background-color: #fff;
 	color: #3cc3b5;
 	border-radius: 50%;
-	line-height: 1.1em;
+	line-height: 1em;
 	text-align: center;
-	cursor: pointer;
+	/*cursor: pointer;*/
+	border: none;
 }
 .modal__btn{
 	color: #fff;
