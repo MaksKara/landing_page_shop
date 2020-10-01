@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
 window.onload = function () {
 	alignHeight();
 	window.onresize = alignHeight;
-	// alignHeight_2();
+	// alignHeight_1();
 	checkCard();
 	renderToCart();
 }
@@ -26,9 +26,13 @@ let products = [
 
 let priceHeader = document.querySelector('.header__price'),
 	dotQuant = document.querySelector('.header__quant'),
-	modalQuant = document.querySelector('.modal__numb'),
+	// modalQuant = document.querySelector('.modal__numb'),
 	quantModal = document.querySelector('#total-amount'),
 	priceModal = document.querySelector('#total-price');
+
+priceHeader.innerHTML = '0$';
+dotQuant.innerHTML = 0;
+// modalQuant.innerHTML = 1;
 
 function scrollFunc() {
 	let scrollPos = 50;
@@ -40,10 +44,6 @@ function scrollFunc() {
 		header.classList.remove('active');
 	}
 }
-
-priceHeader.innerHTML = '0$';
-dotQuant.innerHTML = 0;
-// modalQuant.innerHTML = 1;
 
 //================================
 //************RENDER**************
@@ -86,23 +86,40 @@ function alignHeight() {
 //************LOCAL****************
 //***********STORAGE***************
 //=================================
-let cart = [];
-let cartModal = [];
 
 let totalAmount = 0;
 let totalPrice = 0;
 
+function renderQuant() {
+	dotQuant.innerHTML = totalAmount;
+	quantModal.innerHTML = totalAmount;
+}
+
 document.addEventListener('click', event => {
 	event.preventDefault();
-	if (event.target.dataset.id) {
+
+	const idProduct = event.target.dataset.id
+	if (idProduct) {
 		totalAmount++;
-		dotQuant.innerHTML = totalAmount;
-		quantModal.innerHTML = totalAmount;
+		renderQuant();
 		addToCart(event);
 		priceTotal();
 	}
+
+	const btnModal = event.target.dataset.btn;
+	if (btnModal == 'plus') {
+		console.log('plus');
+		modalPlus(event);
+	} else if (btnModal == 'minus') {
+		console.log('minus');
+		modalMinus(event)
+	} else if (btnModal == 'delete') {
+		console.log('delete');
+	}
 });
 
+let cart = [];
+let cartModal = [];
 let productObject = {};
 let productArray = [];
 
@@ -146,7 +163,6 @@ function addToCart(event) {
 		checkCard();
 		renderToCart();
 	}
-
 }
 
 function priceTotal() {
@@ -163,7 +179,6 @@ function checkCard() {
 	if (items != null) {
 		cartModal = JSON.parse(items);
 	}
-
 	renderToCart(cartModal);
 }
 
@@ -179,12 +194,12 @@ const drawCart = cart => `
 			<img src="${cart.img}" alt="${cart.title}" class="modal__img">
 		</div>
 		<div class="modal__quant">
-			<button class="btn-minus">-</button>
+			<button class="btn-minus" data-btn="minus" data-prod=${cart.id}>-</button>
 			<span class="modal__numb">${cart.count}</span>
-			<button class="btn-plus">+</button>
+			<button class="btn-plus" data-btn="plus" data-prod=${cart.id}>+</button>
 		</div>
 		<span class="modal__price">${cart.price}$</span>
-		<button class="modal__btn btn-delete">Delete</button>
+		<button class="modal__btn btn-delete" data-btn="delete" data-prod=${cart.id}>Delete</button>
 	</div>
 `
 
@@ -197,38 +212,51 @@ function renderToCart() {
 //*************COUNT**************
 //*************MODAL**************
 //================================
-// const btnPlus = document.querySelector('.btn-plus'),
-// 	  btnMinus = document.querySelector('.btn-minus');
-// const maxAmound = 9; 
-// let count = 1;
 
-// function modalPlus() {
-// 	for(let i = 1; i < maxAmound; i++){
-// 		if(count < maxAmound) {
-// 			count++;
-// 			modalQuant.innerHTML = count;
-// 			dotQuant.innerHTML = count;
-// 			break;
-// 		} else {
-// 			alert('Sorry, max amount products(');
-// 			break;
-// 		}
-// 	}	
-// }
+const maxAmound = 9;
 
-// function modalMinus() {
-// 	for(let i = count; i > 1; i--){
-// 		if(count > 1) {
-// 			count--;
-// 			modalQuant.innerHTML = count;
-// 			dotQuant.innerHTML = count;
-// 			break;
-// 		} 
-// 	}	
-// }
+function modalPlus(event) {
+	for (let i of cartModal) {
+		// console.log(i.id)
+		// console.log(event.target.dataset.prod)
+		if (i.id == event.target.dataset.prod) {
+			if (i.count < maxAmound) {
+				i.count++;
+				totalAmount++;
+				renderQuant();
+			} else {
+				alert('Sorry, max amount products(');
+			}
+		}
 
-// btnPlus.addEventListener('click', modalPlus);
-// btnMinus.addEventListener('click', modalMinus);
+		localStorage.setItem('prod', JSON.stringify(cartModal));
+	}
+	renderToCart();
+}
+
+function modalMinus(event) {
+	for (let i of cartModal) {
+		if (i.id == event.target.dataset.prod) {
+			if (i.count > 1) {
+				i.count--;
+				totalAmount--;
+				renderQuant();
+			} else {
+				alert('Sorry, min amount products(');
+			}
+		}
+		localStorage.setItem('prod', JSON.stringify(cartModal));
+	}
+	renderToCart();
+	// 	for(let i = count; i > 1; i--){
+	// 		if(count > 1) {
+	// 			count--;
+	// 			modalQuant.innerHTML = count;
+	// 			dotQuant.innerHTML = count;
+	// 			break;
+	// 		} 
+	// 	}	
+}
 
 
 
